@@ -1,5 +1,5 @@
-import createPlugin from 'tailwindcss/plugin';
-import theme from './theme';
+import createPlugin from 'tailwindcss/lib/plugin.js';
+import theme from './theme.js';
 
 /** @type {import('tailwindcss/types/config').PluginCreator} */
 const pluginCreator = api => {
