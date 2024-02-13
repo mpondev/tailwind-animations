@@ -1,4 +1,4 @@
-import createPlugin from 'tailwindcss/lib/plugin.js';
+import createPlugin from 'tailwindcss/plugin.js';
 import theme from './theme.js';
 
 /** @type {import('tailwindcss/types/config').PluginCreator} */
