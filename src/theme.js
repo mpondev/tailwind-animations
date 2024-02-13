@@ -418,4 +418,17 @@ export default {
       '100%': { transform: 'scale(1)', opacity: '1' },
     },
   },
+  animationDelay: {
+    none: 0,
+    0: 0,
+    100: '100ms',
+    150: '150ms',
+    200: '200ms',
+    250: '250ms',
+    300: '300ms',
+    400: '400ms',
+    500: '500ms',
+    700: '700ms',
+    1000: '1000ms',
+  },
 };
