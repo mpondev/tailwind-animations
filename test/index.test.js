@@ -36,6 +36,14 @@ describe('tailwindcss-animations plugins', () => {
     expect(css).toMatch('.animate-duration-100{animation-duration:100ms}');
   });
 
+  it('use a predefined named animation duration', async () => {
+    const css = await generatePluginCSS({
+      content: '<div class="animate-duration-faster">Hello</div>',
+    });
+
+    expect(css).toMatch('.animate-duration-faster{animation-duration:100ms}');
+  });
+
   it('use a custom animation duration', async () => {
     const css = await generatePluginCSS({
       content: '<div class="animate-duration-[777ms]">Hello</div>',

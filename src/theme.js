@@ -433,6 +433,11 @@ export default {
   },
   animationDuration: {
     none: 0,
+    slower: '500ms',
+    slow: '400ms',
+    normal: '300ms',
+    fast: '200ms',
+    faster: '100ms',
     0: 0,
     100: '100ms',
     150: '150ms',
