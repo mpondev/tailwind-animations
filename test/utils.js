@@ -21,10 +21,3 @@ export function generatePluginCSS(options = {}) {
     })
     .then(result => result.css);
 }
-
-console.log(
-  await generatePluginCSS({
-    content:
-      '<div class="animate-zoom-in">Hello</div><div class="animate-rotate-90">Hello</div>',
-  })
-);

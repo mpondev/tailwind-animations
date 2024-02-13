@@ -23,6 +23,13 @@ module.exports = {
   rules: {
     'comma-dangle': 'off',
     semi: [2, 'always'],
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always',
+      },
+    ],
   },
 };
