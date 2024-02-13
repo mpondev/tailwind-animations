@@ -3,7 +3,7 @@ import theme from './theme.js';
 
 /** @type {import('tailwindcss/types/config').PluginCreator} */
 const pluginCreator = api => {
-  const { theme, matchUtilities } = api;
+  const { theme, matchUtilities, addUtilities } = api;
 
   const dynamicUtils = {
     'animate-delay': {
@@ -27,6 +27,24 @@ const pluginCreator = api => {
         values,
       }
     );
+  });
+
+  addUtilities({
+    '.animate-ease': {
+      'animation-timing-function': 'ease',
+    },
+    '.animate-ease-in': {
+      'animation-timing-function': 'ease-in',
+    },
+    '.animate-ease-out': {
+      'animation-timing-function': 'ease-out',
+    },
+    '.animate-ease-in-out': {
+      'animation-timing-function': 'ease-in-out',
+    },
+    '.animate-linear': {
+      'animation-timing-function': 'linear',
+    },
   });
 };
 

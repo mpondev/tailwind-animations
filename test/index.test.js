@@ -45,4 +45,12 @@ describe('tailwindcss-animations plugins', () => {
       '.animate-duration-\\[777ms\\]{animation-duration:777ms}'
     );
   });
+
+  it('use a timing function animation', async () => {
+    const css = await generatePluginCSS({
+      content: '<div class="animate-linear">Hello</div>',
+    });
+
+    expect(css).toMatch('.animate-linear{animation-timing-function:linear}');
+  });
 });
