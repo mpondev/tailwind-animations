@@ -5,11 +5,26 @@ settings:
   excludeLinksFromLockfile: false
 
 devDependencies:
+  eslint:
+    specifier: ^8.0.1
+    version: 8.56.0
+  eslint-config-standard:
+    specifier: ^17.1.0
+    version: 17.1.0(eslint-plugin-import@2.29.1)(eslint-plugin-n@15.7.0)(eslint-plugin-promise@6.1.1)(eslint@8.56.0)
+  eslint-plugin-import:
+    specifier: ^2.25.2
+    version: 2.29.1(eslint@8.56.0)
+  eslint-plugin-n:
+    specifier: '^15.0.0 || ^16.0.0 '
+    version: 15.7.0(eslint@8.56.0)
+  eslint-plugin-promise:
+    specifier: ^6.0.0
+    version: 6.1.1(eslint@8.56.0)
   standard:
     specifier: 17.1.0
     version: 17.1.0
   tailwindcss:
-    specifier: ^3.4.1
+    specifier: 3.4.1
     version: 3.4.1
 
 packages:
