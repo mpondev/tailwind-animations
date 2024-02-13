@@ -15,6 +15,17 @@ const pluginCreator = api => {
       values: theme('animationDelay'),
     }
   );
+
+  matchUtilities(
+    {
+      'animate-duration': value => ({
+        'animation-duration': value,
+      }),
+    },
+    {
+      values: theme('animationDuration'),
+    }
+  );
 };
 
 /** @type {import('tailwindcss/types/config').Config} */
