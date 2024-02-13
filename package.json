@@ -1,6 +1,6 @@
 {
   "name": "@mpondev/tailwind-animations",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Tailwind CSS animation plugin",
   "main": "./src/index.js",
   "type": "module",
@@ -11,23 +11,21 @@
   "author": "Mario Ponce (@mpondev)",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.0.1",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
-    "eslint-plugin-promise": "^6.0.0",
-    "postcss": "^8.4.35",
+    "@csstools/postcss-minify": "^1.1.0",
+    "eslint": "8.0.1",
+    "eslint-config-standard": "17.1.0",
+    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-n": "15.0.0 || 16.0.0 ",
+    "eslint-plugin-promise": "6.0.0",
+    "postcss": "8.4.35",
     "standard": "17.1.0",
     "tailwindcss": "3.4.1",
-    "vitest": "^1.2.2"
+    "vitest": "1.2.2"
   },
   "peerDependencies": {
     "tailwindcss": "^3.0.0"
   },
   "eslintConfig": {
     "extends": "standard"
-  },
-  "dependencies": {
-    "@csstools/postcss-minify": "^1.1.0"
   }
 }
