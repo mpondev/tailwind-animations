@@ -73,51 +73,63 @@ export default {
         </div>
       </div>
     </header>
-  </main>
 
-  <section
-    class="m-auto grid max-w-4xl grid-cols-2 gap-4 px-4 sm:grid-cols-3 lg:grid-cols-4"
-  >
-    {
-      Object.keys(animation).map(animationKey => {
-        return (
-          <article
-            class="relative col-span-1 cursor-crosshair rounded border border-gray-200 bg-white/10 backdrop-blur-sm transition-colors animate-duration-1000 hover:border-gray-400 hover:shadow"
-            data-class={animationKey}
-          >
-            <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
-              <span class="flex h-16 w-16 items-center justify-center rounded-md bg-zinc-600" />
-              <p class="text-sm font-semibold opacity-80">{animationKey}</p>
-            </div>
-            <button
-              aria-label={`Copy ${animationKey.split('-').join(' ')} animation`}
-              class="absolute top-2 right-2"
+    <section class="mb-6 flex items-center justify-center">
+      <label class="relative inline-flex cursor-pointer items-center">
+        <input type="checkbox" value="" class="peer sr-only" id="animate" />
+        <div
+          class="rtl:peer-checked:after:-translate-x- peer h-8 w-16 rounded-full bg-gray-200 after:absolute after:start-[2px] after:top-[2px] after:h-7 after:w-7 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-zinc-600 peer-checked:after:translate-x-[31px] peer-checked:after:border-white peer-focus:outline-none dark:bg-zinc-300"
+        >
+        </div>
+        <span class="ms-3 text-xl font-medium text-gray-900">Animate all</span>
+      </label>
+    </section>
+
+    <section
+      class="m-auto grid max-w-4xl grid-cols-2 gap-4 px-4 sm:grid-cols-3 lg:grid-cols-4"
+    >
+      {
+        Object.keys(animation).map(animationKey => {
+          return (
+            <article
+              class="relative col-span-1 cursor-crosshair rounded border border-gray-200 bg-white/10 backdrop-blur-sm transition-colors animate-duration-1000 hover:border-gray-400 hover:shadow"
+              data-class={animationKey}
             >
-              <CopyIcon />
-            </button>
-          </article>
-        );
-      })
-    }
-  </section>
+              <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+                <span class="flex h-16 w-16 items-center justify-center rounded-md bg-zinc-600" />
+                <p class="text-sm font-semibold opacity-80">{animationKey}</p>
+              </div>
+              <button
+                aria-label={`Copy ${animationKey.split('-').join(' ')} animation`}
+                class="absolute top-2 right-2"
+              >
+                <CopyIcon />
+              </button>
+            </article>
+          );
+        })
+      }
+    </section>
 
-  <footer
-    class="mx-auto flex max-w-2xl items-center justify-center px-4 pb-10 pt-20 text-center text-sm opacity-60"
-  >
-    <p>
-      Based on <a
-        href="https://animation.ibelick.com/"
-        target="_blank"
-        rel="noopener noreferrer">Julien Thibeaut Tailwind animations</a
-      >
-    </p>
-  </footer>
+    <footer
+      class="mx-auto flex max-w-2xl items-center justify-center px-4 pb-10 pt-20 text-center text-sm opacity-60"
+    >
+      <p>
+        Based on <a
+          href="https://animation.ibelick.com/"
+          target="_blank"
+          rel="noopener noreferrer">Julien Thibeaut Tailwind animations</a
+        >
+      </p>
+    </footer>
+  </main>
 </Layout>
 
 <script>
   import { toast } from 'wc-toast';
 
   const $articles = document.querySelectorAll('article');
+  const $animateAll: HTMLInputElement = document.querySelector('#animate')!;
 
   $articles.forEach($article => {
     const animationKey = $article.getAttribute('data-class');
@@ -132,6 +144,16 @@ export default {
 
     $article.addEventListener('mouseleave', () => {
       $box.classList.remove(animationClass);
+    });
+
+    $animateAll.addEventListener('change', () => {
+      if ($animateAll.checked) {
+        $box.classList.add(animationClass);
+        $box.style.animationIterationCount = 'infinite';
+      } else {
+        $box.classList.remove(animationClass);
+        $box.style.animationIterationCount = 'unset';
+      }
     });
 
     $article.addEventListener('click', () => {
