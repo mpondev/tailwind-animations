@@ -22,6 +22,10 @@ const pluginCreator = api => {
       css: 'animation-fill-mode',
       values: theme('animationFillMode'),
     },
+    'animate-bezier': {
+      css: 'animation-timing-function',
+      values: theme('animationCubicBezier'),
+    },
     'animate-steps': {
       css: 'animation-timing-function',
       values: theme('animationSteps'),
