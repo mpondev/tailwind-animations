@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
+import pkg from '@/../../package.json';
 import theme from '@/../../src/theme.js';
 
 import CopyIcon from '@/icons/copy.astro';
@@ -8,6 +9,7 @@ import GithubIcon from '@/icons/github.astro';
 import { Code } from 'astro:components';
 
 const { animation } = theme;
+const { version } = pkg;
 ---
 
 <Layout title="TailwindCSS Animations">
@@ -19,7 +21,7 @@ const { animation } = theme;
       <div
         class="flex items-center justify-center gap-x-2 *:inline-flex *:items-center *:justify-center *:rounded *:bg-black/10 *:px-2 *:py-1 *:text-xs *:font-medium"
       >
-        <span>v.0.0.4</span>
+        <span>v.{version}</span>
         <a
           href="https://github.com/mpondev/tailwind-animations"
           target="_blank"
