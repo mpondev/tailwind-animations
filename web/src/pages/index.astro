@@ -1,12 +1,12 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { Code } from 'astro:components';
 
 import pkg from '@/../../package.json';
 import theme from '@/../../src/theme.js';
 
 import CopyIcon from '@/icons/copy.astro';
 import GithubIcon from '@/icons/github.astro';
-import { Code } from 'astro:components';
 import ToggleTheme from '@/components/ToggleTheme.astro';
 
 const { animation, animationDelay, animationDuration, animationSteps } = theme;
@@ -17,7 +17,7 @@ const { version } = pkg;
   <wc-toast></wc-toast>
   <main class="pb-20">
     <header
-      class="max-w-4xl mx-auto flex flex-col items-center justify-center py-10"
+      class="mx-auto flex max-w-4xl flex-col items-center justify-center py-10"
     >
       <div
         class="flex items-center justify-center gap-x-2 *:inline-flex *:items-center *:justify-center *:rounded *:bg-black/10 *:px-2 *:py-1 *:text-xs *:font-medium"
@@ -34,6 +34,7 @@ const { version } = pkg;
           <GithubIcon class="size-4" />
         </a>
       </div>
+
       <h1 class="text-center text-4xl font-semibold">TailwindCSS Animations</h1>
       <h2 class="font-medium opacity-70">The plugin that you need</h2>
       <div class="mt-10 px-2 sm:px-0">
@@ -109,6 +110,7 @@ export default {
           }
         </select>
       </label>
+
       <label
         for="delay"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -126,6 +128,7 @@ export default {
           }
         </select>
       </label>
+
       <label
         for="steps"
         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -179,7 +182,11 @@ export default {
           href="https://animation.ibelick.com/"
           target="_blank"
           rel="noopener noreferrer">Julien Thibeaut Tailwind animations</a
-        >
+        > and <a
+          href="https://twitter.com/midudev"
+          target="_blank"
+          rel="noopener noreferrer">@midudev</a
+        > guiding
       </p>
     </footer>
   </main>
