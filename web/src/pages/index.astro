@@ -23,6 +23,7 @@ const { version } = pkg;
       >
         <span>v.{version}</span>
         <a
+          aria-label="View website repository on GitHub"
           href="https://github.com/mpondev/tailwind-animations"
           target="_blank"
           rel="noopener noreferrer"
@@ -31,21 +32,22 @@ const { version } = pkg;
           <GithubIcon class="size-4" />
         </a>
       </div>
-      <h1 class="font-semibold text-4xl">TailwindCSS Animations</h1>
+      <h1 class="text-center text-4xl font-semibold">TailwindCSS Animations</h1>
       <h2 class="font-medium opacity-70">The plugin that you need</h2>
-      <div class="mt-10">
+      <div class="mt-10 px-2 sm:px-0">
         <span class="mb-1 text-xs font-semibold opacity-50">
           1. Install the dependency
         </span>
         <div
-          class="flex text-center items-center justify-between w-full max-w-md pl-4 pr-1 py-1 bg-[#1e1e1e] backdrop-blur text-white rounded-xl gap-x-2"
+          class="flex w-full max-w-md items-center justify-between gap-x-2 rounded-xl bg-[#1e1e1e] py-1 pl-4 pr-1 text-center text-white backdrop-blur"
         >
           <pre
             class="flex text-sm">
-            <Code code='npm install @mpondev/tailwindcss-animations' theme="dark-plus" />
+            <Code wrap={true} code='npm install @mpondev/tailwindcss-animations' theme="dark-plus" />
           </pre>
           <button
             id="copyNpmInstall"
+            aria-label="Copy npm install command"
             class="ring-offset-background focus-visible:ring-ring inline-flex size-7 items-center justify-center whitespace-nowrap rounded-full bg-white/10 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none"
           >
             <CopyIcon />
@@ -61,7 +63,7 @@ const { version } = pkg;
         >
           <pre
             class="flex text-left text-xs">
-            <Code theme="dark-plus" lang="js" code={`import animations from '@mpondev/tailwind-animations'
+            <Code wrap={true} theme="dark-plus" lang="js" code={`import animations from '@mpondev/tailwind-animations'
 
 export default {
   // ...rest of the options
@@ -74,22 +76,22 @@ export default {
   </main>
 
   <section
-    class="px-4 max-w-4xl m-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+    class="m-auto grid max-w-4xl grid-cols-2 gap-4 px-4 sm:grid-cols-3 lg:grid-cols-4"
   >
     {
       Object.keys(animation).map(animationKey => {
         return (
           <article
-            class="animate-duration-1000 col-span-1 border rounded border-gray-200 hover:border-gray-400 hover:shadow transition-colors cursor-crosshair relative bg-white/10 backdrop-blur-sm"
+            class="relative col-span-1 cursor-crosshair rounded border border-gray-200 bg-white/10 backdrop-blur-sm transition-colors animate-duration-1000 hover:border-gray-400 hover:shadow"
             data-class={animationKey}
           >
-            <div class="p-4 flex gap-4 items-center justify-center flex-col w-full h-full">
-              <span class="w-16 h-16 bg-zinc-600 rounded-md flex items-center justify-center" />
-              <p class="font-semibold text-sm opacity-80">{animationKey}</p>
+            <div class="flex h-full w-full flex-col items-center justify-center gap-4 p-4">
+              <span class="flex h-16 w-16 items-center justify-center rounded-md bg-zinc-600" />
+              <p class="text-sm font-semibold opacity-80">{animationKey}</p>
             </div>
             <button
+              aria-label={`Copy ${animationKey.split('-').join(' ')} animation`}
               class="absolute top-2 right-2"
-              onclick={`navigator.clipboard.writeText('animate-${animationKey}')`}
             >
               <CopyIcon />
             </button>
@@ -100,7 +102,7 @@ export default {
   </section>
 
   <footer
-    class="max-w-2xl text-sm pt-20 pb-10 mx-auto text-center px-4 opacity-60 flex justify-center items-center"
+    class="mx-auto flex max-w-2xl items-center justify-center px-4 pb-10 pt-20 text-center text-sm opacity-60"
   >
     <p>
       Based on <a
