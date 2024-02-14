@@ -1,7 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 
-import theme from '../../../src/theme.js';
+import theme from '@/../../src/theme.js';
+
+import CopyIcon from '@/icons/copy.astro';
 
 const { animation } = theme;
 ---
@@ -15,7 +17,10 @@ const { animation } = theme;
       <h1 class="font-semibold text-4xl pt-10">TailwindCSS Animations</h1>
       <h2 class="font-medium opacity-70">The plugin that you need</h2>
       <div class="mt-10">
-        <code>npm install @mpondev/tailwindcss-animations</code>
+        <pre
+          class="flex text-left text-xs">
+          <code>npm install @mpondev/tailwindcss-animations</code>
+        </pre>
       </div>
     </header>
 
@@ -40,7 +45,7 @@ const { animation } = theme;
 </Layout>
 
 <script>
-  import theme from '../../../src/theme.js';
+  import theme from '@/../../src/theme.js';
   import { toast } from 'wc-toast';
 
   const $articles = document.querySelectorAll('article');
