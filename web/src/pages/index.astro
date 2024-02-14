@@ -9,7 +9,7 @@ import GithubIcon from '@/icons/github.astro';
 import { Code } from 'astro:components';
 import ToggleTheme from '@/components/ToggleTheme.astro';
 
-const { animation } = theme;
+const { animation, animationDelay, animationDuration, animationSteps } = theme;
 const { version } = pkg;
 ---
 
@@ -90,6 +90,62 @@ export default {
     </section>
 
     <section
+      class="mb-6 grid grid-flow-col gap-6 columns-4 items-center justify-center"
+    >
+      <label
+        for="duration"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >
+        Duration
+        <select
+          name="duration"
+          id="duration"
+          class="mt-2 bg-gray-50 min-w-36 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        >
+          {
+            Object.entries(animationDuration).map(([key, value]) => {
+              return <option value={value}>{key}</option>;
+            })
+          }
+        </select>
+      </label>
+      <label
+        for="delay"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >
+        Delay
+        <select
+          name="delay"
+          id="delay"
+          class="mt-2 bg-gray-50 min-w-36 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        >
+          {
+            Object.entries(animationDelay).map(([key, value]) => {
+              return <option value={value}>{key}</option>;
+            })
+          }
+        </select>
+      </label>
+      <label
+        for="steps"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >
+        Steps
+        <select
+          name="steps"
+          id="steps"
+          class="mt-2 bg-gray-50 min-w-36 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        >
+          {
+            Object.entries(animationSteps).map(([key, value]) => {
+              return <option value={value}>{key}</option>;
+            })
+          }
+        </select>
+      </label>
+    </section>
+
+    <section
       class="m-auto grid max-w-4xl grid-cols-2 gap-4 px-4 sm:grid-cols-3 lg:grid-cols-4"
     >
       {
@@ -134,6 +190,9 @@ export default {
 
   const $articles = document.querySelectorAll('article');
   const $animateAll: HTMLInputElement = document.querySelector('#animate')!;
+  const $duration: HTMLSelectElement = document.querySelector('#duration')!;
+  const $steps: HTMLSelectElement = document.querySelector('#steps')!;
+  const $delay: HTMLSelectElement = document.querySelector('#delay')!;
 
   $articles.forEach($article => {
     const animationKey = $article.getAttribute('data-class');
@@ -168,6 +227,33 @@ export default {
           type: 'light',
         },
       });
+    });
+  });
+
+  $duration.addEventListener('change', event => {
+    const target = event.target as HTMLSelectElement;
+    $articles.forEach($article => {
+      const $box = $article.querySelector('span');
+      if ($box == null) return;
+      $box.style.animationDuration = target.value;
+    });
+  });
+
+  $steps.addEventListener('change', event => {
+    const target = event.target as HTMLSelectElement;
+    $articles.forEach($article => {
+      const $box = $article.querySelector('span');
+      if ($box == null) return;
+      $box.style.animationTimingFunction = `steps(${target.value})`;
+    });
+  });
+
+  $delay.addEventListener('change', event => {
+    const target = event.target as HTMLSelectElement;
+    $articles.forEach($article => {
+      const $box = $article.querySelector('span');
+      if ($box == null) return;
+      $box.style.animationDelay = target.value;
     });
   });
 

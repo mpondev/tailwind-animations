@@ -156,8 +156,8 @@ export default {
       '100%': { transform: 'translateX(0)' },
     },
     pulse: {
-      '0%, 100%': { transform: 'opacity: 1' },
-      '50%': { transform: 'opacity: 0.5' },
+      '0%, 100%': { opacity: '1' },
+      '50%': { opacity: '0.5' },
     },
     pulsing: {
       '0%': { transform: 'scale(1)' },
@@ -424,8 +424,8 @@ export default {
     },
   },
   animationDelay: {
-    none: 0,
-    0: 0,
+    none: '0ms',
+    0: '0ms',
     100: '100ms',
     150: '150ms',
     200: '200ms',
@@ -440,13 +440,13 @@ export default {
     1000: '1000ms',
   },
   animationDuration: {
-    none: 0,
+    none: '0ms',
     slower: '500ms',
     slow: '400ms',
     normal: '300ms',
     fast: '200ms',
     faster: '100ms',
-    0: 0,
+    0: '0ms',
     100: '100ms',
     150: '150ms',
     200: '200ms',
@@ -461,7 +461,7 @@ export default {
     1000: '1000ms',
   },
   animationSteps: {
-    none: '0 ',
+    none: '0',
     retro: '8',
     normal: '16',
     modern: '24',
