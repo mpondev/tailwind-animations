@@ -30,13 +30,19 @@ const { animation } = theme;
         Object.keys(animation).map(animationKey => {
           return (
             <article
-              class="animate-duration-1000 col-span-1 border rounded border-gray-200 hover:border-gray-600 hover:shadow transition cursor-crosshair"
+              class="animate-duration-1000 col-span-1 border rounded border-[#092635] hover:border-gray-600 hover:shadow transition cursor-crosshair relative"
               data-class={animationKey}
             >
               <div class="p-4 flex gap-4 items-center justify-center flex-col w-full h-full">
-                <span class="w-16 h-16 bg-gray-200 rounded-md flex items-center justify-center" />
+                <span class="w-16 h-16 bg-[#092635] rounded-md flex items-center justify-center" />
                 <h3 class="font-semibold text-xs opacity-80">{animationKey}</h3>
               </div>
+              <button
+                class="absolute top-1 right-2"
+                onclick={`navigator.clipboard.writeText('animate-${animationKey}'); alert('Class animate-${animationKey} copied to clipboard!');`}
+              >
+                <CopyIcon />
+              </button>
             </article>
           );
         })
@@ -67,20 +73,17 @@ const { animation } = theme;
     });
 
     $article.addEventListener('click', () => {
-      const { animation } = theme;
       const animationKey = $article.getAttribute('data-class');
+      const CLASS_PREFIX = 'animate-';
+      const ANIMATION_TO_COPY = CLASS_PREFIX + animationKey;
 
-      if (animationKey && animation[animationKey as keyof typeof animation]) {
-        const animationValue =
-          animation[animationKey as keyof typeof animation];
+      navigator.clipboard.writeText(ANIMATION_TO_COPY);
 
-        navigator.clipboard.writeText(animationValue);
-        toast('Copied to clipboard!', {
-          theme: {
-            type: 'light',
-          },
-        });
-      }
+      toast('Copied to clipboard!', {
+        theme: {
+          type: 'light',
+        },
+      });
     });
   });
 </script>

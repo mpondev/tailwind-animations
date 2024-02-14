@@ -14,6 +14,10 @@ const pluginCreator = api => {
       css: 'animation-duration',
       values: theme('animationDuration'),
     },
+    'animate-iteration-count': {
+      css: 'animation-iteration-count',
+      values: theme('animationIterationCount'),
+    },
     'animate-fill-mode': {
       css: 'animation-fill-mode',
       values: theme('animationFillMode'),
@@ -48,6 +52,18 @@ const pluginCreator = api => {
     },
     '.animate-linear': {
       'animation-timing-function': 'linear',
+    },
+    '.animate-direction-normal': {
+      'animation-direction': 'normal',
+    },
+    '.animate-direction-reverse': {
+      'animation-direction': 'reverse',
+    },
+    '.animate-direction-alternate': {
+      'animation-direction': 'alternate',
+    },
+    '.animate-direction-alternate-reverse': {
+      'animation-direction': 'alternate-reverse',
     },
   });
 };
