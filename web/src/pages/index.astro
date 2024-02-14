@@ -5,6 +5,7 @@ import theme from '@/../../src/theme.js';
 
 import CopyIcon from '@/icons/copy.astro';
 import GithubIcon from '@/icons/github.astro';
+import { Code } from 'astro:components';
 
 const { animation } = theme;
 ---
@@ -31,61 +32,82 @@ const { animation } = theme;
       <h1 class="font-semibold text-4xl">TailwindCSS Animations</h1>
       <h2 class="font-medium opacity-70">The plugin that you need</h2>
       <div class="mt-10">
+        <span class="mb-1 text-xs font-semibold opacity-50">
+          1. Install the dependency
+        </span>
         <div
-          class="flex text-center items-center w-full max-w-md pl-4 pr-1 py-1 bg-black/50 backdrop-blur text-white rounded-full gap-x-2"
+          class="flex text-center items-center justify-between w-full max-w-md pl-4 pr-1 py-1 bg-[#1e1e1e] backdrop-blur text-white rounded-xl gap-x-2"
         >
           <pre
             class="flex text-sm">
-            <code>npm install @mpondev/tailwindcss-animations</code>
+            <Code code='npm install @mpondev/tailwindcss-animations' theme="dark-plus" />
           </pre>
           <button
             id="copyNpmInstall"
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-white/10 text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none size-7"
+            class="ring-offset-background focus-visible:ring-ring inline-flex size-7 items-center justify-center whitespace-nowrap rounded-full bg-white/10 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none"
           >
             <CopyIcon />
           </button>
         </div>
+        <span
+          class="mb-1 mt-4 block text-left text-xs font-semibold opacity-50"
+        >
+          2. Add to your configuration
+        </span>
+        <div
+          class="flex w-full max-w-md items-center gap-x-2 rounded-xl bg-[#1e1e1e] py-3 pl-4 pr-4 text-center text-white backdrop-blur"
+        >
+          <pre
+            class="flex text-left text-xs">
+            <Code theme="dark-plus" lang="js" code={`import animations from '@mpondev/tailwind-animations'
+
+export default {
+  // ...rest of the options
+  plugins: [animations],
+}`} />
+          </pre>
+        </div>
       </div>
     </header>
-
-    <section
-      class="px-4 max-w-4xl m-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
-    >
-      {
-        Object.keys(animation).map(animationKey => {
-          return (
-            <article
-              class="animate-duration-1000 col-span-1 border rounded border-gray-200 hover:border-gray-400 hover:shadow transition-colors cursor-crosshair relative bg-white/10 backdrop-blur-sm"
-              data-class={animationKey}
-            >
-              <div class="p-4 flex gap-4 items-center justify-center flex-col w-full h-full">
-                <span class="w-16 h-16 bg-zinc-600 rounded-md flex items-center justify-center" />
-                <p class="font-semibold text-sm opacity-80">{animationKey}</p>
-              </div>
-              <button
-                class="absolute top-2 right-2"
-                onclick={`navigator.clipboard.writeText('animate-${animationKey}')`}
-              >
-                <CopyIcon />
-              </button>
-            </article>
-          );
-        })
-      }
-    </section>
-
-    <footer
-      class="max-w-2xl text-sm pt-20 pb-10 mx-auto text-center px-4 opacity-60 flex justify-center items-center"
-    >
-      <p>
-        Based on <a
-          href="https://animation.ibelick.com/"
-          target="_blank"
-          rel="noopener noreferrer">Julien Thibeaut Tailwind animations</a
-        >
-      </p>
-    </footer>
   </main>
+
+  <section
+    class="px-4 max-w-4xl m-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+  >
+    {
+      Object.keys(animation).map(animationKey => {
+        return (
+          <article
+            class="animate-duration-1000 col-span-1 border rounded border-gray-200 hover:border-gray-400 hover:shadow transition-colors cursor-crosshair relative bg-white/10 backdrop-blur-sm"
+            data-class={animationKey}
+          >
+            <div class="p-4 flex gap-4 items-center justify-center flex-col w-full h-full">
+              <span class="w-16 h-16 bg-zinc-600 rounded-md flex items-center justify-center" />
+              <p class="font-semibold text-sm opacity-80">{animationKey}</p>
+            </div>
+            <button
+              class="absolute top-2 right-2"
+              onclick={`navigator.clipboard.writeText('animate-${animationKey}')`}
+            >
+              <CopyIcon />
+            </button>
+          </article>
+        );
+      })
+    }
+  </section>
+
+  <footer
+    class="max-w-2xl text-sm pt-20 pb-10 mx-auto text-center px-4 opacity-60 flex justify-center items-center"
+  >
+    <p>
+      Based on <a
+        href="https://animation.ibelick.com/"
+        target="_blank"
+        rel="noopener noreferrer">Julien Thibeaut Tailwind animations</a
+      >
+    </p>
+  </footer>
 </Layout>
 
 <script>
