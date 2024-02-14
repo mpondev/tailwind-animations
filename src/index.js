@@ -14,6 +14,10 @@ const pluginCreator = api => {
       css: 'animation-duration',
       values: theme('animationDuration'),
     },
+    'animate-fill-mode': {
+      css: 'animation-fill-mode',
+      values: theme('animationFillMode'),
+    },
   };
 
   Object.entries(dynamicUtils).forEach(([name, { css, values }]) => {
