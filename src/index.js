@@ -22,20 +22,27 @@ const pluginCreator = api => {
       css: 'animation-fill-mode',
       values: theme('animationFillMode'),
     },
+    'animate-steps': {
+      css: 'animation-timing-function',
+      values: theme('animationSteps'),
+      generateValue: value => `steps(${value})`,
+    },
   };
 
-  Object.entries(dynamicUtils).forEach(([name, { css, values }]) => {
-    matchUtilities(
-      {
-        [name]: value => ({
-          [css]: value,
-        }),
-      },
-      {
-        values,
-      }
-    );
-  });
+  Object.entries(dynamicUtils).forEach(
+    ([name, { css, values, generateValue }]) => {
+      matchUtilities(
+        {
+          [name]: value => ({
+            [css]: generateValue ? generateValue(value) : value,
+          }),
+        },
+        {
+          values,
+        }
+      );
+    }
+  );
 
   addUtilities({
     '.animate-ease': {
